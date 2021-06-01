@@ -19,10 +19,5 @@ const exec = (query) => {
 }
 
 module.exports = exec
-
-// connection.query('SELECT * FROM article;', function (error, results, fields) {
-//   if (error) throw error;
-//   console.log('The result is: ', results);
-// });
  
 // connection.end();
