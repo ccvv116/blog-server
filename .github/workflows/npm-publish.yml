@@ -1,0 +1,31 @@
+name: Publish And Deploy Demo
+on: 
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/**'
+      - 'README.md'
+
+jobs:
+  build-client-nuxt:
+    runs-on: ubuntu-latest
+    steps:
+
+    # 下载源码
+    - name: Checkout
+      uses: actions/checkout@master
+          
+    # 部署到服务器
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.BWGHOST }}
+        username: ${{ secrets.USERNAME }}
+        port: ${{ secrets.PORT }}
+        key: ${{ secrets.BWGHOST_SSHKEY }}
+        script: |
+          pm2 stop all
+          cd /root/blog/server
+          npm install
+          pm2 restart all
