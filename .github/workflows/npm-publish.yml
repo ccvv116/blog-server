@@ -23,7 +23,7 @@ jobs:
         host: ${{ secrets.ORACLE_HOST }}
         username: ${{ secrets.USERNAME }}
         port: ${{ secrets.PORT }}
-        key: ${{ secrets.BWGHOST_SSHKEY }}
+        key: ${{ secrets.ORACLE_SSHKEY }}
         script: |
           pm2 stop all
           cd /home/opc/blog/server
