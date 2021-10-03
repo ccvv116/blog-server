@@ -1,5 +1,5 @@
 const exec = require("../db/mysql")
-const { escape } = require("mysql")
+const { escape } = require("mysql2")
 
 // 登录
 const login = (username, password) => {
